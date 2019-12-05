@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content%}
+<h2 style="color:lightseagreen">food images and names</h2>
+<div class="container-fluid">
+
+  <div class="row">
+    {% for recipe in all_recipes%}
+    <div class="col-md-3"><br>
+      <div class="card card-cascade narrower">
+        <div class="view view-cascade overlay">
+          <img class="card-img-top" src="{{recipe.dish_image.url}}"
+            alt="Card image cap" height="200px">
+          <!-- <button class="btn-hidden">View Recipe</button> -->
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        
+        <div class="card-body card-body-cascade">
+          
+          <h4 class="font-weight-bold card-title">{{recipe.name}}</h4>
+          <!-- <h5 class="green-text pb-2 pt-1"><i class="fas fa-utensils"></i> <small>Epicurious</small></h5>           -->
+
+          <button class="btn btn-sm btn-danger">View Recipe</button>
+
+        </div>
+
+      </div>
+    </div>
+    {% endfor %}
+  </div><br>
+  
+</div>
+{% endblock%}
