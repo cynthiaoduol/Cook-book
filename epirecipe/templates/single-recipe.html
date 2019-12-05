@@ -1,0 +1,9 @@
+{%  extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+<h3 style="color: rgb(43, 226, 67)">single recipe content</h3>
+{% for recipe in all_recipes%}
+<div class=card-body></div>
+{% endfor %}
+
+{% endblock%}
