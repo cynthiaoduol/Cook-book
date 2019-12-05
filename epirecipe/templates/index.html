@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>Epicurious</h1>
+<a href="{% url 'new-recipe' %}" class="btn btn-sm btn-info mt-4">Add Recipe</a>
+<a href="{% url 'food' %}" class="btn btn-sm btn-info mt-4">Resipes</a>
+
+{% endblock %}
