@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Food
+from .models import Food,Profile,Comment
 
 class SignUpForm(UserCreationForm):
     username = forms.CharField(max_length=50)
@@ -12,8 +12,22 @@ class SignUpForm(UserCreationForm):
         fields = ('username','email','password1','password2')
 
 
+class UpdateProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('name','profile_picture','bio')
+        exclude = ('user',)
+
+
 class FoodRecipeForm(forms.ModelForm):
     class Meta:
         model = Food
         fields = ('name','dish_image','ingredients','procedure')
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('comment',)
+        exclude = ('user','recipe')
 
