@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
+from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate,login
-from .forms import SignUpForm,FoodRecipeForm
+from .forms import SignUpForm,FoodRecipeForm,UpdateProfileForm,CommentForm
 from django.contrib.auth.models import User
-from .models import Food
+from .models import Food,Profile,Comment
 
 
 
@@ -23,6 +24,22 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+
+def edit_profile(request, username):
+    user = User.objects.get(username=username)
+    if request.method == 'POST':
+        form = UpdateProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('profile', user.username)
+    else:
+        form = UpdateProfileForm()
+    return render(request, 'create_profile.html', {'form': form})
+
+
+def profile(request, username):
+    return render(request, 'profile.html')
 
 
 def recipes(request):
@@ -46,9 +63,24 @@ def add_recipe(request):
     return render(request,'newrecipe.html',{'form':form})  
 
 
-def single_recipe(request,food_id):
-    food = Food.objects.get(id=food_id)
-    params = {'hood':hood}
+def single_recipe(request,recipe_id):
+    recipe = Food.objects.get(id=recipe_id)
+    comment = Comment.objects.filter(recipe=recipe)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            coment_form = form.save(commit=False)
+            coment_form.recipe = recipe
+            coment_form.user = request.user.profile
+            coment_form.save()
+            return redirect('single_recipe',recipe.id)
+    else:
+        form = CommentForm()
+    params = {
+        'recipe':recipe,
+        'form':form,
+        'comment':comment
+    }
     return render(request,'single-recipe.html',params)
     
 
