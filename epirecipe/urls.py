@@ -9,7 +9,9 @@ urlpatterns = [
     path('account/register/', views.signup, name='signup'),
     path('new-recipe/',views.add_recipe, name='new-recipe'),
     path('all-recipes/',views.recipes,name='food'),
-    path('single_recipe/<food_id>', views.single_recipe, name='single-recipe'),
+    path('single_recipe/<recipe_id>', views.single_recipe, name='single-recipe'),
+    path('profile/<username>/edit/', views.edit_profile, name='edit-profile'),
+    path('profile/<username>', views.profile, name='profile'),
 ]
 
 
