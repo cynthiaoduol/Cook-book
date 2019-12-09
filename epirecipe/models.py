@@ -11,6 +11,7 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} profile'
     
+    
     def save_profile(self):
         self.save
 
@@ -39,8 +40,8 @@ class Comment(models.Model):
     user = models.ForeignKey('Profile', on_delete=models.CASCADE, related_name='comment_owner')
     recipe = models.ForeignKey('Food', on_delete=models.CASCADE, related_name='mycomment')
 
-    def __str__(self):
-        return f'{self.user.username} comment'
+    # def __str__(self):
+    #     return f'{self.user.username} comment'
 
     def save_comment(self):
         self.save()
