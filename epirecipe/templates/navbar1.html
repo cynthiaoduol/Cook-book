@@ -10,6 +10,7 @@
         <a class="nav-link" href="{% url 'index' %}">Home
           <span class="sr-only">(current)</span>
         </a>
+        </li>
     </ul>
     
     {% if user.is_authenticated %}
@@ -44,3 +45,14 @@
         
   </div>
 </nav>
+
+
+<!-- {% if is_favourite%}
+            <a href="{% url 'favourite_recipe' recipe.id %}">
+              <i class="fas fa-bookmark fa-lg"></i>
+            </a>
+            {%else%}
+            <a href="{% url 'favourite_recipe' recipe.id %}">
+              <i class="far fa-bookmark fa-lg"></i>
+            </a>
+            {% endif %} -->

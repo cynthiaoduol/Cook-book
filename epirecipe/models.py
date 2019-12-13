@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 import datetime as dt
+from django.urls import reverse
+
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
@@ -10,8 +13,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} profile'
-    
-    
+
     def save_profile(self):
         self.save
 
@@ -20,34 +22,47 @@ class Profile(models.Model):
 
 
 class Food(models.Model):
-	name = models.CharField(max_length=100)
-	dish_image = models.ImageField(upload_to='images/', default='image.jpg')
-	ingredients = models.TextField(max_length=1000)
-	procedure = models.TextField(max_length=2000)
-	 
-	def __str__(self):
-		return self.name
 
-	def save_food(self):
-		self.save()
+    name = models.CharField(max_length=100)
+    dish_image = models.ImageField(upload_to='images/', default='image.jpg')
+    ingredients = models.TextField(max_length=1000)
+    procedure = models.TextField(max_length=2000)
+    favourite = models.ManyToManyField(User, related_name='favourite', blank=True)
 
-	def delete_food(self):
-		self.delete()
 
-    
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('food', kwargs={'name':self.name})
+
+    def save_food(self):
+        self.save()
+
+    def delete_food(self):
+        self.delete()
+
+
 class Comment(models.Model):
     comment = models.TextField(max_length=100)
     user = models.ForeignKey('Profile', on_delete=models.CASCADE, related_name='comment_owner')
     recipe = models.ForeignKey('Food', on_delete=models.CASCADE, related_name='mycomment')
 
-    # def __str__(self):
-    #     return f'{self.user.username} comment'
+
+    def __str__(self):
+        return self.comment
+
 
     def save_comment(self):
         self.save()
 
     def delete_comment(self):
         self.delete()
-    
 
+    
+class NewsLetterRecipients(models.Model):
+    name = models.CharField(max_length = 30)
+    email = models.EmailField()
+
+    
 

@@ -1,14 +1,38 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate,login
-from .forms import SignUpForm,FoodRecipeForm,UpdateProfileForm,CommentForm
+from .forms import SignUpForm,FoodRecipeForm,UpdateProfileForm,CommentForm,NewsLetterForm
 from django.contrib.auth.models import User
 from .models import Food,Profile,Comment
+from django.http import JsonResponse
+from .email import send_welcome_email
 
 
 
 def index(request):
-    return render(request, 'index.html')
+    if request.method == 'POST':
+        form = NewsLetterForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['your_name']
+            email = form.cleaned_data['email']
+            recipient = NewsLetterRecipients(name = name,email =email)
+            recipient.save()
+            send_welcome_email(name,email)
+            HttpResponseRedirect('index')
+    else:
+        form = NewsLetterForm()
+    return render(request, 'index.html', {"letterForm":form})
+
+
+# def newsletter(request):
+#     name = request.POST.get('your name')
+#     email = request.POST.get('email')
+#     recipient = NewsLetterRecipients(name=name, email=email)
+#     recipient.save()
+#     send_welcome_email(name, email)
+#     data = {'success': 'You have been successfully added to mailing list'}
+
+#     return JsonResponse(data)
 
 
 def signup(request):
@@ -73,15 +97,43 @@ def single_recipe(request,recipe_id):
             coment_form.recipe = recipe
             coment_form.user = request.user.profile
             coment_form.save()
-            return redirect('single_recipe',recipe.id)
+            return redirect('single-recipe',recipe.id)
     else:
         form = CommentForm()
+
+    is_favourite = False
+    if recipe.favourite.filter(id=request.user.id).exists():
+        is_favourite = True
     params = {
         'recipe':recipe,
         'form':form,
-        'comment':comment
+        'comment':comment,
+        'is_favourite':is_favourite
     }
     return render(request,'single-recipe.html',params)
+
+
+
+def favourite_recipe(request, id):
+    recipe = get_object_or_404(Food, id=id)
+    if recipe.favourite.filter(id=request.user.id).exists():
+        recipe.favourite.remove(request.user)
+    else:
+        recipe.favourite.add(request.user)
+    return HttpResponseRedirect(recipe.get_absolute_url())
+
+
+def recipe_favourite_list(request):
+    user = request.user
+    favourite_recipes = user.favourite.all()
+    params = {
+        'favourite_recipes':favourite_recipes
+    }
+    return render(request, 'favourite_recipe.html', params)
+
+
+
+
     
 
 

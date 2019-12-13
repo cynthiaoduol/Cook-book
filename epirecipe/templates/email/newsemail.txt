@@ -1,0 +1,3 @@
+Hello {{name}}
+
+Welcome to the Epicurious site Get recipes to your favourite meals

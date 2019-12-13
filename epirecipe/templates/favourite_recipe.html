@@ -1,0 +1,31 @@
+{%  extends 'base.html' %}
+{% block content %}
+<h1 class="text-center">Favourite posts</h1>
+<div class="row">
+  {% for recipe in favourite_posts %}
+  <div class="col-md-3"><br>
+    <div class="card card-cascade narrower">
+      <div class="view view-cascade overlay">
+        <img class="card-img-top" src="{{recipe.dish_image.url}}" alt="Card image cap" height="200px">
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+
+      <div class="card-body card-body-cascade">
+
+        <h4 class="font-weight-bold card-title">{{recipe.name}}</h4>
+
+        <a href="{% url 'single-recipe' recipe.id%}" class="btn btn-sm btn-danger">View Recipe</a>
+
+      </div>
+
+    </div>
+  </div>
+  {% endfor %}
+</div><br>
+
+</div>
+
+{% endblock%}

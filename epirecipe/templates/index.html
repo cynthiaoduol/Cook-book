@@ -1,8 +1,185 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
-<h1>Epicurious</h1>
-<a href="{% url 'new-recipe' %}" class="btn btn-sm btn-info mt-4">Add Recipe</a>
-<a href="{% url 'food' %}" class="btn btn-sm btn-info mt-4">Recipes</a>
+<div class="container-fluid landing text-white "> 
+  <div style="padding-top:200px;float: left;">
+    <h1>Welcome to Epicurious</h1>
+    <h2>Need Healthy Food Recipes?</h2>
+    <h3></h3>
+  <br><br>
+  
+  <h3>Sign up or Sign in to Get started</h3>
+  <a href="{% url 'signup' %}" class="btn btn-md btn-info">Sign Up</a>
+      
+  
+  </div>
+</div>
+<div class="container text-center">
+  <h1 class="text-center">What we do</h1>
+  <div class="card-deck">
+    <div class="card">
+      <img class="card-img-top" src="/static/images/img1.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae consectetur, debitis eaque
+          veritatis aut officia perferendis voluptate! Libero numquam labore eaque modi laudantium porro quisquam
+          debitis. Minus mollitia ut eligendi?</p>
 
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="/static/images/img4.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic fuga similique voluptate
+          labore quae, iusto quidem laudantium mollitia harum provident reprehenderit illo cupiditate! Repellat ab, iste
+          necessitatibus explicabo perspiciatis modi?</p>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="/static/images/img2.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio fugiat aspernatur
+          perferendis minima rem voluptatibus possimus voluptas, rerum illum, recusandae hic numquam amet ab obcaecati?
+          A mollitia fugit quas maxime!</p>
+      </div>
+    </div>
+  </div>
+</div><br>
+<div class="container-fluid text-center">
+  <div class="jumbotron myjumbotron">
+    <h2>Our Foods</h2>
+    <hr>
+    <div class="card-deck">
+      <div class="card" style="border-radius: 60%">
+        <img class="card-img-top" src="/static/images/img1.jpg" alt="Card image cap" style="border-radius: 60%">
+
+      </div>
+      <div class="card" style="border-radius: 60%">
+        <img class="card-img-top" src="/static/images/img4.jpg" alt="Card image cap" style="border-radius: 60%">
+
+      </div>
+      <div class="card" style="border-radius: 60%">
+        <img class="card-img-top" src="/static/images/img2.jpg" alt="Card image cap" style="border-radius: 60%">
+
+      </div>
+      <div class="card" style="border-radius: 60%">
+          <img class="card-img-top" src="/static/images/img1.jpg" alt="Card image cap" style="border-radius: 60%">
+  
+        </div>
+        <div class="card" style="border-radius: 60%">
+            <img class="card-img-top" src="/static/images/img2.jpg" alt="Card image cap" style="border-radius: 60%">
+    
+          </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Footer-->
+<div>
+<footer class="page-footer light-blue center-on-small-only">
+
+  <!--Footer Links-->
+  <div class="container-fluid">
+      <div class="row">
+          <!--First column-->
+          <div class="col-md-4 sm-4">
+          <p><a href="tel:+254711581484"><b>General Enquiries:</b> +254 703 694 473</a></p>
+          <p><a href="https://wa.me/254712293878"><b>WhatsApp Enquiries:</b> <i class="fab fa-whatsapp"></i> +254 703 694 473</a></p>
+          <p><b>Email:</b> epicurious@gmail.com</p>
+          <p><b>Admissions Enquiries:</b> +254 712 293 878</p>
+        </div>
+
+          
+
+          <hr class="hidden-md-up">
+
+          <div class="col-md-4">
+            <form  action="{%url 'index'%}" method="post">
+              {%csrf_token%}
+              {{letterForm|crispy}}
+              
+              <input type="submit" value="Subscribe">
+            </form>
+          </div>
+          
+
+      </div>
+  </div>
+  <!--/.Footer Links-->
+
+  <hr>
+
+  <!--Social buttons-->
+  <ul class="list-unstyled list-inline text-center">
+    <li class="list-inline-item">
+      <a href="https://facebook.com/epicurious/" class="btn-floating btn-small btn-fb">
+        <i class="fab fa-facebook fa-2x"></i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a href="https://twitter.com" class="btn-floating btn-small btn-tw">
+        <i class="fab fa-twitter fa-2x ml-3"></i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a href="https://google.com/" class="btn-floating btn-small btn-gplus">
+        <i class="fab fa-google-plus-g fa-2x ml-3"></i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a href="https://instagram.com/epicurious/" class="btn-floating btn-small btn-ins">
+        <i class="fab fa-instagram fa-2x ml-3"></i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a href="https://github.com" class="btn-floating btn-small btn-git">
+        <i class="fab fa-github fa-2x ml-3"></i>
+      </a>
+    </li>
+  </ul>
+  <!-- Social buttons -->
+
+  <!--Copyright-->
+  <div class="footer-copyright">
+      <div class="container-fluid">
+          © 2015 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+
+      </div>
+  </div>
+  <!--/.Copyright-->
+
+</footer></div>
+<!--/.Footer-->
+
+
+
+
+
+<style>
+  .landing {
+    background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(/static/images/bg-top5.jpg)center/ cover no-repeat fixed;
+    height: 100vh;
+  }
+  .myjumbotron{
+    background-color: rgb(0, 195, 255);
+  }
+  .pixelated {
+  image-rendering: pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+.asteriskField{
+  display: none;
+}
+</style>
+{% endblock %}
+
+
+
+{% block scripts %} 
+{{block.super}}
+  <script type="text/javascript" src="{%static 'js/newsletter.js'%}"></script>
 {% endblock %}
