@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate,login
 from .forms import SignUpForm,FoodRecipeForm,UpdateProfileForm,CommentForm,NewsLetterForm
 from django.contrib.auth.models import User
-from .models import Food,Profile,Comment
+from .models import Food,Profile,Comment,NewsLetterRecipients
 from django.http import JsonResponse
 from .email import send_welcome_email
 
