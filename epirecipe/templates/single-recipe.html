@@ -9,7 +9,7 @@
       <div class="row no-gutters">
         <div class="col-md-5">
           <div class=card-title>
-            <h3>{{recipe.name}}</h3>
+            <h2>{{recipe.name}}</h2>
             {% if is_favourite%}
             <a href="{% url 'favourite_recipe' id=recipe.id %}">
               <i class="fas fa-bookmark fa-lg"></i>
@@ -24,11 +24,14 @@
           <img src="{{recipe.dish_image.url}}" class="img-thumbnail" alt="">
         </div>
         {% autoescape on %}
-        <div class=card-body>{{recipe.ingredients}}</div>
+        <div class=card-body>
+          <h3 class="text-center">Ingredients</h3>
+          {{recipe.ingredients}}</div>
         {% endautoescape %}
         
         {% autoescape on %}
-        <div class=card-body>{{recipe.procedure}}</div>
+        <div class=card-body>
+            <h3 class="text-center">Procedure</h3>{{recipe.procedure}}</div>
         {% endautoescape %}
       </div>
 
