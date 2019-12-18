@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
-<h3 style="color: rgb(43, 226, 67)">single recipe content</h3>
+<br><br><br>
 <div class="container">
   <div class="row">
     <div class="card mb-3">
@@ -11,7 +11,7 @@
           <div class=card-title>
             <h3>{{recipe.name}}</h3>
             {% if is_favourite%}
-            <a href="{% url 'favourite_recipe' recipe.id %}">
+            <a href="{% url 'favourite_recipe' id=recipe.id %}">
               <i class="fas fa-bookmark fa-lg"></i>
             </a>
             {%else%}
@@ -23,8 +23,13 @@
           </div>
           <img src="{{recipe.dish_image.url}}" class="img-thumbnail" alt="">
         </div>
+        {% autoescape on %}
         <div class=card-body>{{recipe.ingredients}}</div>
+        {% endautoescape %}
+        
+        {% autoescape on %}
         <div class=card-body>{{recipe.procedure}}</div>
+        {% endautoescape %}
       </div>
 
     </div>

@@ -3,9 +3,11 @@ beautifulsoup4==4.8.1
 Django==2.2.7
 django-bootstrap4==1.0.1
 django-crispy-forms==1.8.1
+django-tinymce==2.8.0
 Pillow==6.2.1
 psycopg2==2.8.4
 pycodestyle==2.5.0
+python-decouple==3.3
 pytz==2019.3
 soupsieve==1.9.5
 sqlparse==0.3.0

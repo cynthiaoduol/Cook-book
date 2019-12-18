@@ -10,13 +10,13 @@
   <br><br>
   
   <h3>Sign up or Sign in to Get started</h3>
-  <a href="{% url 'signup' %}" class="btn btn-md btn-info">Sign Up</a>
+  <a href="{% url 'food' %}" class="btn btn-md btn-info">View Recipes</a>
       
   
   </div>
-</div>
+</div><br>
 <div class="container text-center">
-  <h1 class="text-center">What we do</h1>
+  <h3 class="text-center">Because we are always cooking something delicious</h3>
   <div class="card-deck">
     <div class="card">
       <img class="card-img-top" src="/static/images/img1.jpg" alt="Card image cap">
@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="card">
-      <img class="card-img-top" src="/static/images/img4.jpg" alt="Card image cap">
+      <img class="card-img-top" src="/static/images/img9.jpg" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic fuga similique voluptate
@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="card">
-      <img class="card-img-top" src="/static/images/img2.jpg" alt="Card image cap">
+      <img class="card-img-top" src="/static/images/img10.jpg" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio fugiat aspernatur
@@ -50,11 +50,11 @@
 </div><br>
 <div class="container-fluid text-center">
   <div class="jumbotron myjumbotron">
-    <h2>Our Foods</h2>
+    <h3>Our Newest Recipes</h3>
     <hr>
     <div class="card-deck">
       <div class="card" style="border-radius: 60%">
-        <img class="card-img-top" src="/static/images/img1.jpg" alt="Card image cap" style="border-radius: 60%">
+        <img class="card-img-top" src="/static/images/img7.jpg" alt="Card image cap" style="border-radius: 60%">
 
       </div>
       <div class="card" style="border-radius: 60%">
@@ -62,7 +62,7 @@
 
       </div>
       <div class="card" style="border-radius: 60%">
-        <img class="card-img-top" src="/static/images/img2.jpg" alt="Card image cap" style="border-radius: 60%">
+        <img class="card-img-top" src="/static/images/img6.jpg" alt="Card image cap" style="border-radius: 60%">
 
       </div>
       <div class="card" style="border-radius: 60%">
@@ -78,19 +78,15 @@
 </div>
 
 
-<!--Footer-->
 <div>
 <footer class="page-footer light-blue center-on-small-only">
-
-  <!--Footer Links-->
   <div class="container-fluid">
       <div class="row">
-          <!--First column-->
           <div class="col-md-4 sm-4">
           <p><a href="tel:+254711581484"><b>General Enquiries:</b> +254 703 694 473</a></p>
           <p><a href="https://wa.me/254712293878"><b>WhatsApp Enquiries:</b> <i class="fab fa-whatsapp"></i> +254 703 694 473</a></p>
           <p><b>Email:</b> epicurious@gmail.com</p>
-          <p><b>Admissions Enquiries:</b> +254 712 293 878</p>
+          
         </div>
 
           
@@ -109,11 +105,13 @@
 
       </div>
   </div>
-  <!--/.Footer Links-->
+  
 
   <hr>
 
-  <!--Social buttons-->
+  
+  <h4 class="text-center">Feel free to follow us:</h4>
+  <div class="overlay"></div>
   <ul class="list-unstyled list-inline text-center">
     <li class="list-inline-item">
       <a href="https://facebook.com/epicurious/" class="btn-floating btn-small btn-fb">
@@ -141,19 +139,16 @@
       </a>
     </li>
   </ul>
-  <!-- Social buttons -->
-
-  <!--Copyright-->
-  <div class="footer-copyright">
+  <div class="footer-copyright light-blue text-center" style="height: 30px">
       <div class="container-fluid">
-          © 2015 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+          © 2019 Copyright: <a href="https://instagram.com/epicurious/"> Epicurious </a>
 
       </div>
   </div>
-  <!--/.Copyright-->
+  
 
 </footer></div>
-<!--/.Footer-->
+
 
 
 
@@ -164,9 +159,9 @@
     background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(/static/images/bg-top5.jpg)center/ cover no-repeat fixed;
     height: 100vh;
   }
-  .myjumbotron{
+  /* .myjumbotron{
     background-color: rgb(0, 195, 255);
-  }
+  } */
   .pixelated {
   image-rendering: pixelated;
   -ms-interpolation-mode: nearest-neighbor;

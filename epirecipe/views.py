@@ -6,33 +6,24 @@ from django.contrib.auth.models import User
 from .models import Food,Profile,Comment,NewsLetterRecipients
 from django.http import JsonResponse
 from .email import send_welcome_email
+from django.contrib.auth.decorators import login_required
 
 
 
 def index(request):
-    if request.method == 'POST':
-        form = NewsLetterForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['your_name']
-            email = form.cleaned_data['email']
-            recipient = NewsLetterRecipients(name = name,email =email)
-            recipient.save()
-            send_welcome_email(name,email)
-            HttpResponseRedirect('index')
-    else:
-        form = NewsLetterForm()
+    form = NewsLetterForm()
     return render(request, 'index.html', {"letterForm":form})
 
 
-# def newsletter(request):
-#     name = request.POST.get('your name')
-#     email = request.POST.get('email')
-#     recipient = NewsLetterRecipients(name=name, email=email)
-#     recipient.save()
-#     send_welcome_email(name, email)
-#     data = {'success': 'You have been successfully added to mailing list'}
+def newsletter(request):
+    name = request.POST.get('your name')
+    email = request.POST.get('email')
+    recipient = NewsLetterRecipients(name=name, email=email)
+    recipient.save()
+    send_welcome_email(name, email)
+    data = {'success': 'You have been successfully added to mailing list'}
 
-#     return JsonResponse(data)
+    return JsonResponse(data)
 
 
 def signup(request):
@@ -64,8 +55,8 @@ def edit_profile(request, username):
 
 def profile(request, username):
     return render(request, 'profile.html')
-
-
+    
+@login_required(login_url='login')
 def recipes(request):
     all_recipes = Food.objects.all()
     all_recipes = all_recipes[::-1]

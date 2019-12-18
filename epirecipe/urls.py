@@ -12,9 +12,10 @@ urlpatterns = [
     path('single_recipe/<recipe_id>', views.single_recipe, name='single-recipe'),
     path('profile/<username>/edit/', views.edit_profile, name='edit-profile'),
     path('profile/<username>', views.profile, name='profile'),
-    path('favourite_recipe/<id>', views.favourite_recipe,name='favourite_recipe'),
+    path('favourite_recipe/<int:id>/', views.favourite_recipe,name='favourite_recipe'),
     path('favourites/',views.recipe_favourite_list, name='recipe_favourite_list'),
-    # path('ajax/newsletter/', views.newsletter, name ='newsletter')
+    path('ajax/newsletter/', views.newsletter, name ='newsletter'),
+    path('tinymce/', include('tinymce.urls')),
 ]
 
 
