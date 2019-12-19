@@ -15,7 +15,7 @@ urlpatterns = [
     path('favourite_recipe/<int:id>/', views.favourite_recipe,name='favourite_recipe'),
     path('favourites/',views.recipe_favourite_list, name='recipe_favourite_list'),
     path('ajax/newsletter/', views.newsletter, name ='newsletter'),
-    path('tinymce/', include('tinymce.urls')),
+    
 ]
 
 
