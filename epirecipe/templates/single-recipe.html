@@ -9,7 +9,7 @@
       <div class="row no-gutters">
         <div class="col-md-5">
           <div class=card-title>
-            <h2>{{recipe.name}}</h2>
+            <h2 style="font-family: 'Cinzel', serif;">{{recipe.name}}</h2>
             {% if is_favourite%}
             <a href="{% url 'favourite_recipe' id=recipe.id %}">
               <i class="fas fa-bookmark fa-lg"></i>
