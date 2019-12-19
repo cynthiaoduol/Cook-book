@@ -10,7 +10,7 @@
       <div class="row no-gutters">
         <div class="col-md-5">
           <div class=card-title>
-            <h2 style="font-family: 'Cinzel', serif;">{{recipe.name}}</h2>
+            <strong><h1 style="font-family: 'Cinzel', serif;">{{recipe.name}}</h1></strong>
             {% if is_favourite%}
             <a href="{% url 'favourite_recipe' id=recipe.id %}">
               <i class="fas fa-bookmark fa-lg"></i>
@@ -26,13 +26,13 @@
         </div>
         {% autoescape on %}
         <div class=card-body>
-          <h3 class="text-center">Ingredients</h3>
-          {{recipe.ingredients}}</div>
+          <h4 class="text-center" style="font-family: 'IBM Plex Serif', serif;">Ingredients</h4><hr>
+          {{recipe.ingredients| safe}}</div>
         {% endautoescape %}
         
         {% autoescape on %}
-        <div class=card-body>
-            <h3 class="text-center">Procedure</h3>{{recipe.procedure}}</div>
+        <div class=card-body><hr>
+            <h4 class="text-center" style="font-family: 'IBM Plex Serif', serif;">Procedure</h4>{{recipe.procedure| safe}}</div>
         {% endautoescape %}
       </div>
 
