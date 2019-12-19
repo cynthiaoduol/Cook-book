@@ -4,24 +4,24 @@
 {% block content %}
 <div class="container-fluid landing text-white "> 
   <div style="padding-top:200px;float: left;">
-    <h1>Welcome to Epicurious</h1>
-    <h3>Need Healthy Food Recipes?</h3>
+    <h1 class="animated bounceInDown" style="font-family: 'Abril Fatface', cursive;font-size: 80px;animation-delay: 0.2s;">Welcome to Epicurious</h1>
+    <h3 class="animated fadeInRight" style="font-family: 'IBM Plex Serif', serif;font-size: 50px;animation-delay: 1.5s;padding-left: 80px">Need Healthy Food Recipes?</h3>
    
   <br><br>
-  
-  <h3>Get your recipes here</h3>
+  <div class="animated flipInX" style="animation-delay: 2.5s;padding-left: 150px">
+  <h3 style="font-family: 'IBM Plex Serif', serif;">Get your recipes here</h3>
   <a href="{% url 'food' %}" class="btn btn-md btn-info">View Recipes</a>
-      
+</div>
   
   </div>
 </div><br>
 <div class="container text-center">
-  <h3 class="text-center">Because we are always cooking something delicious</h3>
+  <h3 class="text-center" style="font-family: 'Cinzel', serif;">Because we are always cooking something delicious</h3>
   <div class="card-deck">
     <div class="card">
       <img class="card-img-top" src="/static/images/img7.jpg" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">Make It</h5>
+        <h5 class="card-title" style="font-family: 'Cinzel', serif;">Make It</h5>
         <p class="card-text">Our pantry is stocked with very many bites of inspiration to help guide you from inspiration to celebration with your next kitchen creation.</p>
 
       </div>
@@ -29,14 +29,14 @@
     <div class="card">
       <img class="card-img-top" src="/static/images/img9.jpg" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">Love It</h5>
+        <h5 class="card-title" style="font-family: 'Cinzel', serif;">Love It</h5>
         <p class="card-text">Did you make it? Love it! Then pass it on. Post recipes, photos, reviews, I made its, collections and more telling your food tribe about your latest mouthwatering masterpiece.</p>
       </div>
     </div>
     <div class="card">
       <img class="card-img-top" src="/static/images/img10.jpg" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">Share It</h5>
+        <h5 class="card-title" style="font-family: 'Cinzel', serif;">Share It</h5>
         <p class="card-text">Sharing foods you crave and following the cooks you love helps us to feed your feed with lots of recipe awesomeness handpicked just for you.</p>
       </div>
     </div>
@@ -44,7 +44,7 @@
 </div><br>
 <div class="container-fluid text-center">
   <div class="jumbotron myjumbotron">
-    <h3>Our Newest Recipes</h3>
+    <h3 style="font-family: 'IBM Plex Serif', serif;">Our Newest Recipes</h3>
     <hr>
     <div class="card-deck">
       <div class="card" style="border-radius: 60%">
@@ -88,7 +88,7 @@
           <hr class="hidden-md-up">
 
           <div class="col-md-4">
-            <h5 class="text-center">Subscribe to our Newsletter:</h5><hr>
+            <h5 class="text-center" style="font-family: 'IBM Plex Serif', serif;">Subscribe to our Newsletter:</h5><hr>
             <form  action="{%url 'index'%}" method="post">
               {%csrf_token%}
               {{letterForm|crispy}}
@@ -105,7 +105,7 @@
   <hr>
 
   
-  <h4 class="text-center">Feel free to follow us:</h4><br>
+  <h4 class="text-center" style="font-family: 'IBM Plex Serif', serif;">Feel free to follow us:</h4><br>
   <ul class="list-unstyled list-inline text-center">
     <li class="list-inline-item">
       <a href="https://facebook.com/epicurious/" class="btn-floating btn-small btn-fb">
